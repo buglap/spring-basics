@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${title}"></div>
+			<div class="card-body">
+				<!--         <h1 class="text-primary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}" align="center">Content</h1> -->
+
+				<table class="table table-light" align="center">
+					<thead class="thead-light">
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Cupos</th>
+							<th>Horario</th>
+							<th>Aula</th>
+							<th>Matricular</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="curso: ${curso}">
+							<td th:text="${curso.id}"></td>
+							<td th:text="${curso.nombre}"></td>
+							<td th:text="${curso.cupos}"></td> 
+							<td th:text="${curso.horario}"></td>
+							<td th:text="${curso.aula}"></td>
+						<td><a class="btn btn-primary btn-xs" th:href="@{/matricular/}+${curso.id}" />matricular</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
