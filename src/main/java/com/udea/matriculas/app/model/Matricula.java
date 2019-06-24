@@ -13,6 +13,7 @@ public class Matricula implements Serializable{
 	}
 
 	public Matricula() {
+		
 	}
 
 	public Curso getCurso() {

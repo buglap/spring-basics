@@ -9,7 +9,7 @@ public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String nombre;
-	private String cupos;
+	private int cupos;
 	private String horario;
 	private String aula;
 	
@@ -17,7 +17,7 @@ public class Curso implements Serializable {
 		
 	}
 	
-	public Curso(String id, String nombre, String cupos, String horario, String aula) {
+	public Curso(String id, String nombre, int cupos, String horario, String aula) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -55,11 +55,11 @@ public class Curso implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getCupos() {
+	public int getCupos() {
 		return cupos;
 	}
-	public void setCupos(String string) {
-		this.cupos = string;
+	public void setCupos(int cupos2) {
+		this.cupos = cupos2;
 	}
 
 

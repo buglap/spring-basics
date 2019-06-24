@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+
+		<div class="container py-4">
+			<div class="card bg-dark text-white">
+				<div class="card-header" th:text="${title}"></div>
+				<div class="card-body">
+
+					<form th:action="@{/}" th:object="${String}" method="post">
+
+						<div class=" form-group row">
+							<label class="col-sm-2 col-form-label">FilePath</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" th:value="${sourceText}" name="sourceText" />
+							</div>
+						</div>
+						<div class=" form-group row">
+							<div class="col-sm-3">
+								<input class="btn btn-primary" type="submit"> <input
+									class="btn btn-danger" type="reset">
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -18,7 +18,7 @@ and open the template in the editor.
 <body>
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Spring</a>
+			<a class="navbar-brand" href="#">Matricula</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -32,6 +32,7 @@ and open the template in the editor.
 							<span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Oferta</a>
+<!-- 					<li class="nav-item"><a class="nav-link" th:href="@{/matriculados}">Matriculados</a> -->
 					</li>
 				</ul>
 			</div>
@@ -46,12 +47,10 @@ and open the template in the editor.
 	<footer th:fragment="footer" class= "container">
 		<hr/>
 		<p>
-			Powered by <a href="https://projects.spring.io/spring-boot">spring boot</a> y 
+			Powered by <a href="https://projects.spring.io/spring-boot">spring boot</a> and 
 		<a href="https://thymeleaf.org">Thymeleaf</a>
 		</p>
-		<p>
-		Con eclipse STS
-		</p>
+		
 		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

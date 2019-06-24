@@ -15,6 +15,7 @@ public class Oferta implements Serializable{
 	private int cuposRestantes;
 	
 	public Oferta() {
+		
 	}
 
 	public Oferta(List<Curso> cursos) {

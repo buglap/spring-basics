@@ -63,7 +63,13 @@ public class Excel {
 			Curso curso = new Curso();
 			curso.setId(cells.get(i)); 
 			curso.setNombre(cells.get(i+1));
-			curso.setCupos(cells.get(i+2));
+			String cupos = cells.get(i+2);
+			//curso.setCupos(cells.get(i+2));
+			try {
+			curso.setCupos(Integer.parseInt(cupos));
+			}catch (Exception e) {
+				curso.setCupos(0);
+			}
 			curso.setHorario(cells.get(i+3));
 			curso.setAula(cells.get(i+4));
 		    oferta.add(curso);
@@ -104,7 +110,7 @@ public class Excel {
 		return valueCell;
 	}
 
-	public static void modifyExistingWorkbook(String filePath, Estudiante estudiante) throws InvalidFormatException, IOException {
+	public static void modifyExistingWorkbook(String filePath, Estudiante estudiante, String id) throws InvalidFormatException, IOException {
         
 		// Obtain a workbook from the excel file
         Workbook workbook = WorkbookFactory.create(new FileInputStream(filePath));
@@ -114,6 +120,8 @@ public class Excel {
         	 Row row = sheet.createRow(0);
         	 int columnCount = 0;
         	 Cell cell = row.createCell(columnCount);
+        	 cell.setCellValue("Curso");
+        	 cell = row.createCell(++columnCount);
              cell.setCellValue("id");
              cell = row.createCell(++columnCount);
              cell.setCellValue("Nombre");
@@ -130,10 +138,15 @@ public class Excel {
              Row row = sheet.createRow(++rowCount);
         
              int columnCount = 0;
-             	String codigo=estudiante.getId();
+             
+             	String codigo=id;
              	Cell cell = row.createCell(columnCount);
                 cell.setCellValue(codigo);
              	
+                cell = row.createCell(++columnCount);
+             	codigo=estudiante.getId();
+             	cell.setCellValue(codigo);
+                
                 cell = row.createCell(++columnCount);
              	codigo=estudiante.getNombre();
              	cell.setCellValue(codigo);
