@@ -73,8 +73,8 @@ public class martriculaController {
    		 return "matricular";
    	 }
 		Excel excel = new Excel();
-		System.out.println("curs"+curso);
 		Excel.modifyExistingWorkbook(filepath, estudiante, curso);
+		oferta.updateCursos(curso);
         return "redirect:listar";
     }
 }

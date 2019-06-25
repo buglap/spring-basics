@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -54,8 +56,8 @@ public class Excel {
 
 	}
 	//class to fit the data in to the logic business
-	public List<Curso> getOffert(List<String> cells){
-		List<Curso> oferta = new ArrayList<Curso>();
+	public Map<String,Curso> getOffer(List<String> cells){
+		Map<String,Curso> oferta = new HashMap<String, Curso>();
 		System.out.println("cells size"+cells.size());
 		int i= 0;
 		while (i < cells.size()) {
@@ -72,15 +74,45 @@ public class Excel {
 			}
 			curso.setHorario(cells.get(i+3));
 			curso.setAula(cells.get(i+4));
-		    oferta.add(curso);
+		    oferta.put(curso.getId(), curso);
 		    System.out.println("aula: "+curso.getAula());
 		    System.out.println("oferta size: "+oferta.size());
 		    System.out.println("i values: "+ i);
 		    i=i+5;
 		}
-		oferta.remove(0);
+		oferta.remove("codigo");
 		return oferta;
 	}
+
+	
+	//class to fit the data in to the logic business
+//	public List<Curso> getOffert(List<String> cells){
+//		List<Curso> oferta = new ArrayList<Curso>();
+//		System.out.println("cells size"+cells.size());
+//		int i= 0;
+//		while (i < cells.size()) {
+//			 if(cells.get(i)=="" || cells.get(i)==null) break;
+//			Curso curso = new Curso();
+//			curso.setId(cells.get(i)); 
+//			curso.setNombre(cells.get(i+1));
+//			String cupos = cells.get(i+2);
+//			//curso.setCupos(cells.get(i+2));
+//			try {
+//			curso.setCupos(Integer.parseInt(cupos));
+//			}catch (Exception e) {
+//				curso.setCupos(0);
+//			}
+//			curso.setHorario(cells.get(i+3));
+//			curso.setAula(cells.get(i+4));
+//		    oferta.add(curso);
+//		    System.out.println("aula: "+curso.getAula());
+//		    System.out.println("oferta size: "+oferta.size());
+//		    System.out.println("i values: "+ i);
+//		    i=i+5;
+//		}
+//		oferta.remove(0);
+//		return oferta;
+//	}
 
 	private Object cellValue(Cell cell) {
 		Object valueCell = new Object();

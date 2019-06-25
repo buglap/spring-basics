@@ -15,6 +15,8 @@ and open the template in the editor.
 			<div class="card-body">
 				<!--         <h1 class="text-primary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}" align="center">Content</h1> -->
 
+
+
 				<table class="table table-light" align="center">
 					<thead class="thead-light">
 						<tr>
@@ -27,13 +29,14 @@ and open the template in the editor.
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="curso: ${curso}">
-							<td th:text="${curso.id}"></td>
-							<td th:text="${curso.nombre}"></td>
-							<td th:text="${curso.cupos}"></td> 
-							<td th:text="${curso.horario}"></td>
-							<td th:text="${curso.aula}"></td>
-						<td><a class="btn btn-primary btn-xs" th:href="@{/matricular/}+${curso.id}" />matricular</td>
+						<tr th:each="entry : ${curso}" >
+							<td th:text="${entry.value.id}"></td>
+							<td th:text="${entry.value.nombre}"></td>
+							<td th:text="${entry.value.cupos}"></td>
+							<td th:text="${entry.value.horario}"></td>
+							<td th:text="${entry.value.aula}"></td>
+							<td th:unless="${entry.value.cupos == 0}"><a class="btn btn-primary btn-xs"
+								th:href="@{/matricular/}+${entry.value.id}" />matricular</td>
 						</tr>
 					</tbody>
 				</table>
