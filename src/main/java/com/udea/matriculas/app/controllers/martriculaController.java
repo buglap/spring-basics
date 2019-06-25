@@ -29,12 +29,13 @@ import com.udea.matriculas.app.model.Oferta;
 @Controller
 public class martriculaController {
 	Oferta oferta = new Oferta();
+	Matricula matricula =new Matricula();
 	String filepath;
 	
 	//For set the filepath of the excel
 	@GetMapping("/")
 	public String getFilePath(Model model) {	
-		model.addAttribute("title", "File path");
+		model.addAttribute("title", "File path, c:\\..\\xls ó xlxs ");
 		return "file";
 	}
 	
@@ -73,8 +74,11 @@ public class martriculaController {
    		 return "matricular";
    	 }
 		Excel excel = new Excel();
+		if(oferta.hayCupos(curso) && matricula.yaMatriculo(curso+estudiante.getId())==false) {
 		Excel.modifyExistingWorkbook(filepath, estudiante, curso);
 		oferta.updateCursos(curso);
+		matricula.updateMatriculados(curso+estudiante.getId(), estudiante);
+		}
         return "redirect:listar";
     }
 }

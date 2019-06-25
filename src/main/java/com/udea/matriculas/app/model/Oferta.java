@@ -48,4 +48,13 @@ public class Oferta implements Serializable{
 		Curso actual = cursos.get(curso);
 		actual.setCupos(actual.getCupos() - 1);
 	}
+	
+	public boolean hayCupos(String curso) {
+		Curso actual = cursos.get(curso);
+		if(actual.getCupos()>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

@@ -75,9 +75,6 @@ public class Excel {
 			curso.setHorario(cells.get(i+3));
 			curso.setAula(cells.get(i+4));
 		    oferta.put(curso.getId(), curso);
-		    System.out.println("aula: "+curso.getAula());
-		    System.out.println("oferta size: "+oferta.size());
-		    System.out.println("i values: "+ i);
 		    i=i+5;
 		}
 		oferta.remove("codigo");
